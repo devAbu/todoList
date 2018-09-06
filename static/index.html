@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="release/popeye.css" />
 <script src="controller/main.js"></script>
 
+<link href="src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
+ <script src="src/js/angular-datepicker.js"></script>
+
 <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
 
@@ -37,7 +40,9 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <input type="date" name="date" id="date" class="form-control" ng-model="item.date" required>
+            <datepicker  date-format="yyyy-MM-dd">
+              <input type="text" name="date" id="date" ng-model="item.date" required/>
+            </datepicker>
             <span style="color:red" ng-show="addingForm.date.$touched && addingForm.date.$invalid">Date is required</span>
           </div>
           <div class="col-6">
@@ -58,16 +63,14 @@
   <div class="popeye-modal-container">
     <div class="popeye-modal">
       <a class="popeye-close-modal" ng-click="confirm2()"></a>
-      <form name="addingForm">
         <div class="offset-3">
           <h2 class="text-danger mb-5">Are you sure?</h2>
         </div>
         <div class="row">
-          <input type="text" value="{{test}}" />
+          <input type="text" value="{{test}}" hidden/>
           <button class="btn btn-lg btn-success" ng-click="remove(test); confirm2()">Yes</button>
           <button ng-click="confirm2()" class="btn btn-lg btn-danger ml-4">No</button>
         </div>
-      </form>
     </div>
   </div>
 </div>

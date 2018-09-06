@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['toastr']);
+var app = angular.module("myApp", ['toastr',  '720kb.datepicker']);
 
 app.controller("myCtrl",  ['$scope', '$http', 'toastr',  function($scope, $http, toastr) {
       $scope.collapse = function () {
@@ -20,6 +20,7 @@ app.controller("myCtrl",  ['$scope', '$http', 'toastr',  function($scope, $http,
         $http.get('/itemList').then(function(response) {
           console.log("I got the data I requested");
           $scope.items = response.data;
+          //$scope.item = "";
         });
       };
 
@@ -67,6 +68,8 @@ app.controller("myCtrl",  ['$scope', '$http', 'toastr',  function($scope, $http,
           console.log($scope.item._id);
           $http.put('/itemList/' + $scope.item._id, $scope.item).then(function(response) {
             refresh();
+            $scope.item.date = "";
+            $scope.item.description = "";
             toastr.success('Item updated successfully');
           })
         };

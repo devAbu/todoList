@@ -23,6 +23,7 @@
   "homepage": "https://github.com/devAbu/todoList#readme",
   "dependencies": {
     "angular-popeye": "^1.0.5",
+    "angularjs-datepicker": "^2.1.23",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mongojs": "^2.6.0",
