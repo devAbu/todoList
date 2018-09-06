@@ -1,0 +1,31 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "practice meanStack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devAbu/todoList.git"
+  },
+  "keywords": [
+    "todo",
+    "web",
+    "meanStack"
+  ],
+  "author": "abu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devAbu/todoList/issues"
+  },
+  "homepage": "https://github.com/devAbu/todoList#readme",
+  "dependencies": {
+    "angular-popeye": "^1.0.5",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "nodemon": "^1.18.4",
+    "npm": "^6.4.1"
+  }
+}
