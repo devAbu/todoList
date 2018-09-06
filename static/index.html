@@ -30,19 +30,21 @@
   <div class="popeye-modal-container">
     <div class="popeye-modal">
       <a class="popeye-close-modal" ng-click="collapse2()"></a>
-      <form>
+      <form name="addingForm">
         <div class="offset-3">
           <h2 class="text-primary mb-5">Add new to-do item</h2>
         </div>
         <div class="row">
           <div class="col-6">
-            <input type="date" name="date" id="date" class="form-control">
+            <input type="date" name="date" id="date" class="form-control" ng-model="item.date" required>
+            <span style="color:red" ng-show="addingForm.date.$touched && addingForm.date.$invalid">Date is required</span>
           </div>
           <div class="col-6">
-              <input type="text" name="description" id="description" placeholder="description" class="form-control" >
+              <input type="text" name="description" id="description" placeholder="description" class="form-control" ng-model="item.description" required>
+              <span style="color:red" ng-show="addingForm.description.$touched && addingForm.description.$invalid">Description is required</span>
           </div>
           <div class="offset-5 mt-5">
-            <button type="button" name="submit" id="submit" class="btn btn-lg btn-primary">Add</button>
+            <button type="button" name="submit" id="submit" class="btn btn-lg btn-primary" ng-disabled="addingForm.$invalid">Add</button>
           </div>
         </div>
       </form>
