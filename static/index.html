@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="release/popeye.css" />
 <script src="controller/main.js"></script>
 
+<script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+
   </head>
   <body style="background-color: #75aaff; margin-top: 10%" ng-app="myApp" ng-controller="myCtrl">
         <div class="row">
@@ -24,8 +27,6 @@
           </div>
         </div>
 
-        <!-- TODO: uradit angular validaciju -->
-        <!-- TODO: uradit toastr -->
 <div ng-show="visible">
   <div class="popeye-modal-container">
     <div class="popeye-modal">
@@ -44,7 +45,8 @@
               <span style="color:red" ng-show="addingForm.description.$touched && addingForm.description.$invalid">Description is required</span>
           </div>
           <div class="offset-5 mt-5">
-            <button type="button" name="submit" id="submit" class="btn btn-lg btn-primary" ng-disabled="addingForm.$invalid">Add</button>
+            <button type="button" name="submit" id="submit" class="btn btn-lg btn-primary" ng-disabled="addingForm.$invalid" ng-click="addItem(); collapse3()">Add</button>
+            <button type="button" name="update" id="update" class="btn btn-lg btn-secondary" ng-disabled="addingForm.$invalid" ng-click="update(); collapse2()">Update</button>
           </div>
         </div>
       </form>
@@ -52,6 +54,39 @@
   </div>
 </div>
 
+<div ng-show="visible2">
+  <div class="popeye-modal-container">
+    <div class="popeye-modal">
+      <a class="popeye-close-modal" ng-click="confirm2()"></a>
+      <form name="addingForm">
+        <div class="offset-3">
+          <h2 class="text-danger mb-5">Are you sure?</h2>
+        </div>
+        <div class="row">
+          <input type="text" value="{{test}}" />
+          <button class="btn btn-lg btn-success" ng-click="remove(test); confirm2()">Yes</button>
+          <button ng-click="confirm2()" class="btn btn-lg btn-danger ml-4">No</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mt-4" ng-repeat = "x in items">
+  <div class="col-4 offset-1">
+    <input type="text" value="{{x.date}}" readonly class="form-control"/>
+  </div>
+  <div class="col-4">
+    <input type="text" value="{{x.description}}" readonly class="form-control" />
+  </div>
+  <div class="col-1">
+    <button type="button" name="update" id="update" class="btn btn-warning" ng-click="edit(x._id); collapse()">Update</button>
+  </div>
+  <div class="col-1"><!--ng-click="remove(x._id)"-->
+    <button type="button" name="remove" id="remove" class="btn btn-danger" ng-click="confirm(x._id)" >Remove</button>
+  </div>
+</div>
 
 
   </body>
